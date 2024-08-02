@@ -1,0 +1,24 @@
+/* Contact.css */
+.contact-container {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .text-center {
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .submit-button {
+    width: 100%;
+    background-color: #ff6f61;
+    border: none;
+  }
+  
+  .submit-button:hover {
+    background-color: #ff4a4a;
+  }
+  

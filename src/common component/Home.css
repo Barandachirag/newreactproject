@@ -1,0 +1,29 @@
+.carousel-caption {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+  padding: 20px;
+  text-align: center;
+  color: #fff;
+  height: 100%; /* Ensure the caption takes up the full height of the carousel item */
+  /* background: rgba(0, 0, 0, 0.5); Optional: Add a semi-transparent background for better readability */
+}
+
+.carousel-caption h1 {
+  font-size: 3rem;
+  margin-bottom: 20px; /* Adjust spacing between title and paragraph */
+  color: #fff;
+}
+
+.carousel-caption p {
+  font-size: 1.5rem;
+  margin-bottom: 20px; /* Adjust spacing between paragraph and button */
+  color: #fff;
+}
+
+.carousel-caption .btn {
+  font-size: 1.25rem;
+}
+
+  
