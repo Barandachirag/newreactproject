@@ -1,0 +1,12 @@
+.logout {
+    text-align: center;
+    padding: 50px;
+}
+
+.logout h3 {
+    margin-bottom: 20px;
+}
+
+.logout p {
+    color: #555;
+}

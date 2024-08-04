@@ -1,22 +1,27 @@
-// src/component/Signup/Signup.js
-import React, { useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from './firebase';  // Make sure the path is correct
+import { Link } from 'react-router-dom';
 import './Signup.css';
 
 const Signup = () => {
     const navigate = useNavigate();
     const [error, setError] = useState('');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const name = e.target.name.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
 
         if (name && email && password) {
-           
-            localStorage.setItem('user', JSON.stringify({ name, email, password }));
-            navigate('/login'); 
+            try {
+                await createUserWithEmailAndPassword(auth, email, password);
+                navigate('/login');
+            } catch (error) {
+                setError(error.message);
+            }
         } else {
             setError('All fields are required.');
         }
@@ -68,4 +73,6 @@ const Signup = () => {
 };
 
 export default Signup;
+
+
 

@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Carousel, Button, Card } from 'react-bootstrap';
 import { useCart } from '../contexts/CartProvider'; // Import CartProvider context
 import carousel1 from '../component/Carousels/image/carousel1.jpg';
 import carousel2 from '../component/Carousels/image/carousel2.jpg';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate
+import { AuthContext } from '../component/Signup/AuthContext'; // Import AuthContext
 import './Home.css'; // Import CSS file for custom styles
 
 function Home() {
@@ -12,7 +13,9 @@ function Home() {
   const [filteredData, setFilteredData] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
 
-  const { addToCart } = useCart(); 
+  const { addToCart } = useCart();
+  const { logout } = useContext(AuthContext); // Get logout function from AuthContext
+  const navigate = useNavigate(); // Initialize useNavigate
 
   useEffect(() => {
     fetchData();
@@ -61,6 +64,15 @@ function Home() {
     }
   };
 
+  const handleLogout = async () => {
+    try {
+      await logout();
+      navigate('/Logout'); // Navigate to Logout page
+    } catch (error) {
+      console.error('Logout error:', error);
+    }
+  };
+
   return (
     <div>
       <Carousel data-bs-theme="dark">
@@ -105,6 +117,8 @@ function Home() {
           </Button>
         ))}
       </div>
+
+     
 
       <div className="product-grid">
         {filteredData && filteredData.map((item) => (

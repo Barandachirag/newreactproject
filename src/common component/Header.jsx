@@ -100,14 +100,17 @@ const Header = () => {
               
               <Nav.Link as={Link} to="/contact">&nbsp;&nbsp;Contact</Nav.Link>
             </Nav>
+            <Nav.Link as={Link} to="/signup">&nbsp;&nbsp;Signup</Nav.Link>
             {isAuthenticated ? (
               <Button variant="danger" onClick={logout} style={{ marginRight: '10px' }}>
                 Log Out
               </Button>
             ) : (
               <>
+                
                 <Nav.Link as={Link} to="/login">&nbsp;&nbsp;Login</Nav.Link>
-                <Nav.Link as={Link} to="/signup">&nbsp;&nbsp;Signup</Nav.Link>
+               
+                {/* <Nav.Link as={Link} to="/Logout">&nbsp;&nbsp;Logout</Nav.Link> */}
               </>
             )}
           </Navbar.Collapse>

@@ -15,6 +15,8 @@ import { AuthProvider } from './component/Signup/AuthContext';
 import Footer from './common component/Footer';
 import ShopDetails from './common component/ShopDetails';
 import Shop from './common component/Shop'
+import Logout from './component/logout/Logout';
+
 
 
 
@@ -39,6 +41,8 @@ function App() {
         <Route path="/ShopDetails" element={<ShopDetails />} />
         <Route path='/Signup' element={<Signup />}>Signup</Route>
          <Route path='/Login' element={<Login />}></Route>
+         <Route path='/Logout' element={<Logout />}></Route>
+         
       </Routes>
       <Footer />
       </CartProvider>

@@ -1,7 +1,6 @@
-// src/component/login/Login.js
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../component/Signup/AuthContext';
+import { AuthContext } from '../Signup/AuthContext';  // Make sure the path is correct
 import './login.css';
 
 const Login = () => {
@@ -9,17 +8,15 @@ const Login = () => {
     const navigate = useNavigate();
     const [error, setError] = useState('');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
 
-        const storedUser = JSON.parse(localStorage.getItem('user'));
-
-        if (storedUser && storedUser.email === email && storedUser.password === password) {
-            login();
-            navigate('/home');
-        } else {
+        try {
+            await login(email, password);
+            navigate('/Logout');
+        } catch (error) {
             setError('Invalid email or password.');
         }
     };
@@ -62,3 +59,4 @@ const Login = () => {
 };
 
 export default Login;
+
