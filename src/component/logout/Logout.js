@@ -1,34 +1,35 @@
-import React, { useEffect } from 'react';
+// Navbar.js
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
 import { AuthContext } from '../Signup/AuthContext';  
 import { Button } from 'react-bootstrap';
-import './Logout.css';  
+//import './Navbar.css';  // Assuming you have CSS for Navbar
 
-const Logout = () => {
-    const { logout } = useContext(AuthContext);
+const Navbar = () => {
+    const { logout, user } = useContext(AuthContext); // Assuming you have user context
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const handleLogout = async () => {
-            try {
-                await logout();
-                navigate('/Home');
-            } catch (error) {
-                console.error('Logout error:', error);
-            }
-        };
-
-        handleLogout();
-    }, [logout, navigate]);
+    const handleLogout = async () => {
+        try {
+            await logout();
+            navigate('/Login'); // Redirect to Login page after logout
+        } catch (error) {
+            console.error('Logout error:', error);
+        }
+    };
 
     return (
-        <div className="logout">
-            <h3>Logging out...</h3>
-            <p>Please wait while we log you out.</p>
-            
-        </div>
+        <nav className="navbar">
+            {/* Other Navbar items */}
+            {user && (
+                <Button onClick={handleLogout} className="logout-btn">
+                    Logout
+                </Button>
+            )}
+        </nav>
     );
 };
 
-export default Logout;
+export default Navbar;
+
+

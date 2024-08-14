@@ -87,7 +87,7 @@ const Header = () => {
             >
               <Nav.Link as={Link} to="/home">&nbsp;Home</Nav.Link>
               <Nav.Link as={Link} to="/Shop">&nbsp;&nbsp;Shop</Nav.Link>
-              <Nav.Link as={Link} to="/ShopDetails">&nbsp;&nbsp;Shop Details</Nav.Link>
+              <Nav.Link as={Link} to="/home">&nbsp;&nbsp;Shop Details</Nav.Link>
               
               {/* E Shopper List Dropdown */}
               {/* <NavDropdown title="E Shopper List" id="basic-nav-dropdown">

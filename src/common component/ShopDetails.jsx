@@ -1,76 +1,52 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
-//import './ShopDetails.css'; // Import CSS for custom styling
 
 const ShopDetails = () => {
-  const { id } = useParams(); // Retrieve the product ID from the URL
-  const [product, setProduct] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const { id } = useParams(); // Get product ID from URL parameters
+  const [product, setProduct] = useState(null); // State to store product data
+  const [loading, setLoading] = useState(true); // State to indicate loading
+  const [error, setError] = useState(null); // State to store any errors
 
   useEffect(() => {
     const fetchProduct = async () => {
+      setLoading(true); // Set loading state to true
       try {
         const response = await fetch(`https://fakestoreapi.com/products/${id}`);
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
-        const data = await response.json();
-        setProduct(data);
+        const data = await response.json(); // Parse JSON response
+        setProduct(data); // Set product data
       } catch (error) {
         setError(`Error fetching product details: ${error.message}`);
-        console.error('Error fetching product details:', error);
+        console.error('Error:', error);
       } finally {
-        setLoading(false);
+        setLoading(false); // Set loading state to false
       }
     };
 
-    fetchProduct();
+    fetchProduct(); // Call the function to fetch product data
   }, [id]);
 
-  if (loading) {
-    return <div>Loading...</div>; // Show a loading state while fetching data
-  }
-
-  if (error) {
-    return <div>{error}</div>; // Display error message
-  }
-
-  if (!product) {
-    return <div>No product found.</div>; // Handle case when no product data is available
-  }
+  if (loading) return <div>Loading...</div>; // Show loading message
+  if (error) return <div>{error}</div>; // Show error message
+  if (!product) return <div>No product found.</div>; // Show message if no product found
 
   return (
-    <Container className="shop-details-container">
-      <Row>
-        <Col md={6}>
-          <Card className="product-card">
-            <Card.Img variant="top" src={product.image} className="product-image" />
-            <Card.Body>
-              <Card.Title>{product.title}</Card.Title>
-              <Card.Text>{product.description}</Card.Text>
-              <Card.Text><strong>Price:</strong> ${product.price}</Card.Text>
-              <Button variant="primary" className="add-to-cart-button">
-                Add to Cart
-              </Button>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col md={6}>
-          <h5>Product Details</h5>
-          <ul className="product-details-list">
-            <li><strong>ID:</strong> {product.id}</li>
-            <li><strong>Category:</strong> {product.category}</li>
-          </ul>
-        </Col>
-      </Row>
-    </Container>
+    <div>
+      <h1>{product.title}</h1> {/* Display product title */}
+      <img src={product.image} alt={product.title} style={{ width: '300px' }} /> {/* Display product image */}
+      <p>{product.description}</p> {/* Display product description */}
+      <p><strong>Price:</strong> ${product.price}</p> {/* Display product price */}
+    </div>
   );
 };
 
 export default ShopDetails;
+ 
+
+
+
 
 
 

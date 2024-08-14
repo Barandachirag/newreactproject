@@ -1,0 +1,38 @@
+/* ShopDetails.css */
+
+.shop-details-container {
+    margin-top: 20px;
+  }
+  
+  .product-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .product-image {
+    height: 300px;
+    object-fit: cover;
+  }
+  
+  .product-card .card-body {
+    padding: 20px;
+  }
+  
+  .add-to-cart-button {
+    margin-top: 10px;
+  }
+  
+  .product-details-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .product-details-list li {
+    margin-bottom: 10px;
+  }
+  
+  .product-details-list strong {
+    font-weight: bold;
+  }
+  
