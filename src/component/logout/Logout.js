@@ -1,35 +1,39 @@
-// Navbar.js
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../Signup/AuthContext';  
-import { Button } from 'react-bootstrap';
-//import './Navbar.css';  // Assuming you have CSS for Navbar
+import { AuthContext } from '../Signup/AuthContext';  // Ensure this path is correct
+import './Logout.css';  // Ensure the CSS file is correctly named and located
 
-const Navbar = () => {
-    const { logout, user } = useContext(AuthContext); // Assuming you have user context
+const LogoutPage = () => {
+    const { isAuthenticated } = useContext(AuthContext); // Get isAuthenticated from AuthContext
     const navigate = useNavigate();
 
-    const handleLogout = async () => {
-        try {
-            await logout();
-            navigate('/Login'); // Redirect to Login page after logout
-        } catch (error) {
-            console.error('Logout error:', error);
-        }
-    };
+    // const handleLogoutClick = () => {
+    //     navigate('/Signup'); // Redirect to Signup page
+    // };
 
     return (
-        <nav className="navbar">
-            {/* Other Navbar items */}
-            {user && (
-                <Button onClick={handleLogout} className="logout-btn">
-                    Logout
-                </Button>
+        <div className="logout-container">
+            {/* Display message based on authentication status */}
+            {isAuthenticated ? (
+                <>
+                    <p>You are logged in.</p>
+                    {/* <button onClick={handleLogoutClick} className="logout-btn">
+                        Logout
+                    </button> */}
+                </>
+            ) : (
+                <p>You are not logged in.</p>
             )}
-        </nav>
+        </div>
     );
 };
 
-export default Navbar;
+export default LogoutPage;
+
+
+
+
+
+
 
 

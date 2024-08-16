@@ -11,11 +11,23 @@ import { FaShoppingCart } from 'react-icons/fa';
 import { AuthContext } from '../component/Signup/AuthContext';
 import { useCart } from '../contexts/CartProvider';
 import { db } from './firebase';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const { isAuthenticated, logout } = useContext(AuthContext);
   const { cart, addToCart } = useCart();
   const [shopList, setShopList] = useState([]);
+
+  const navigate = useNavigate();
+
+    const handleLogoutClick = async () => {
+        try {
+            await logout(); // Log out the user
+            navigate('/Signup'); // Redirect to Signup page
+        } catch (error) {
+            console.error('Logout error:', error); // Handle any errors
+        }
+    };
 
   useEffect(() => {
     const fetchShopList = async () => {
@@ -102,7 +114,7 @@ const Header = () => {
             </Nav>
             <Nav.Link as={Link} to="/signup">&nbsp;&nbsp;Signup</Nav.Link>
             {isAuthenticated ? (
-              <Button variant="danger" onClick={logout} style={{ marginRight: '10px' }}>
+              <Button variant="danger" onClick={handleLogoutClick} style={{ marginRight: '10px' }}>
                 Log Out
               </Button>
             ) : (

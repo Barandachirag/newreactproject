@@ -1,48 +1,106 @@
+/* General styles for the login form */
 .addUser {
-    background-color: white;
-    width: 25%;
-    margin: 50px auto;
-    /* margin in top and bottom will be 50px  */
-    /* left and right auto  */
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.065);
-  
-    /* horizon offset vertical offset blur offset  */
-    /* opacity of shadow */
-    /* red, green, blue, and (opacity ). */
+  background-color: white;
+  width: 25%;
+  margin: 50px auto;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.065);
+}
+
+.addUserForm .inputGroup {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.addUserForm .inputGroup label {
+  margin-top: 10px;
+}
+
+.addUserForm .inputGroup input {
+  margin-top: 5px;
+  padding: 10px;
+}
+
+.inputGroup button {
+  margin-top: 10px;
+}
+
+.login {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.login .btn.btn-success {
+  width: 50%;
+}
+
+.addUser h3 {
+  text-align: center;
+  font-weight: bold;
+  color: darkcyan;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 1024px) {
+  .addUser {
+    width: 40%;
   }
-  .addUserForm .inputGroup {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .addUserForm .inputGroup label {
-    margin-top: 10px;
-  }
-  
-  .addUserForm .inputGroup input {
-    margin-top: 5px;
-    padding: 10px;
-  }
-  
-  .inputGroup button {
-    margin-top: 10px;
-  }
-  .login {
-    margin-top: 30px;
-    text-align: center;
-  }
-  
-  .login .btn.btn-success {
-    width: 50%;
+}
+
+@media (max-width: 768px) {
+  .addUser {
+    width: 60%;
   }
   
   .addUser h3 {
-    text-align: center;
-    font-weight: bold;
-    color: darkcyan;
-    text-transform: uppercase;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    font-size: 1.5rem;
   }
+  
+  .inputGroup input, .inputGroup button {
+    padding: 8px;
+  }
+
+  .login .btn.btn-success {
+    width: 60%;
+  }
+}
+
+@media (max-width: 576px) {
+  .addUser {
+    width: 80%;
+  }
+
+  .addUser h3 {
+    font-size: 1.2rem;
+  }
+
+  .inputGroup input, .inputGroup button {
+    padding: 8px;
+  }
+
+  .login .btn.btn-success {
+    width: 70%;
+  }
+}
+
+@media (max-width: 400px) {
+  .addUser {
+    width: 90%;
+  }
+
+  .addUser h3 {
+    font-size: 1rem;
+  }
+
+  .inputGroup input, .inputGroup button {
+    padding: 6px;
+  }
+
+  .login .btn.btn-success {
+    width: 80%;
+  }
+}
